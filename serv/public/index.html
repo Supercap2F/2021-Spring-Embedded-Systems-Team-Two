@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="./styles.css">
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&display=swap" rel="stylesheet">
+	<script src="./functions.js"></script>
+</head>
+<body>
+
+
+
+<!-- display is 320x480 -->
+<div id="maindiv">
+	<div id = "mainmenu">
+		<div id="banner">
+			<p class="banner-item">Pool Controller</p>
+			<p class="banner-item">pH 7.5</p>
+			<p class="banner-item">12:42am</p>
+		</div>
+		<div id="main-temp">
+			<h1>85&deg; F</h1>
+		</div>
+		<div id="menu-table-div" >
+			<table id="main-menu-table">
+			  <tr>
+			    <th class="menu-table-elements" id="heatingmenu-element" onclick="changeMenu(this);">Heating</th>
+			    <th class="menu-table-elements" id="filtermenu-element" onclick="changeMenu(this);">Filters</th>
+			  </tr>
+			  <tr>
+			    <th class="menu-table-elements" id="lightmenu-element" onclick="changeMenu(this);">Lights</th>
+			    <th class="menu-table-elements" id="moremenu-element" onclick="changeMenu(this);">Schedule</th>
+			  </tr>
+			</table>
+		</div>
+		<div>
+			<img id="clouds" src="clouds.png" alt="clouds">
+			<p id="air-temp">75&deg F</p>
+			<p id="air">Air</p>
+		</div>
+	</div>
+
+
+
+
+
+	<div id = "heatingmenu" style="display:none">
+		<div id="banner">
+			<p class="banner-item">Heating</p>
+			<p class="banner-item">Air 31&deg; F</p>
+			<p class="banner-item">Outside 75&deg; F</p>
+		</div>
+		<div id="backbutton" onclick="changeMenu(document.getElementById('heatingmenu'));">
+			<p>Back</p>
+		</div>
+	</div>
+
+
+
+
+
+	<div id = "filtermenu" style="display:none">
+		<div id="banner">
+			<p class="banner-item">Filters</p>
+		</div>
+		<div id="backbutton" onclick="changeMenu(document.getElementById('filtermenu'));">
+			<p>Back</p>
+		</div>
+	</div>
+
+
+
+
+	<div id = "lightmenu" style="display:none">
+		<div id="banner">
+			<p class="banner-item">Lights</p>
+		</div>
+		<div id="backbutton" onclick="changeMenu(document.getElementById('lightmenu'));">
+			<p>Back</p>
+		</div>
+	</div>
+
+
+
+
+	<div id = "moremenu" style="display:none">
+		<div id="banner">
+			<p class="banner-item">Schedule</p>
+			<p class="banner-item">12:42pm</p>
+		</div>
+		<div id="backbutton" onclick="changeMenu(document.getElementById('moremenu'));">
+			<p>Back</p>
+		</div>
+	</div>
+</div>
+</body>
+</html>

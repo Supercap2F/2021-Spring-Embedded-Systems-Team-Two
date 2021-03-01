@@ -1,0 +1,122 @@
+html {
+	/*background-image: url(https://images.unsplash.com/photo-1590371674945-9f3c3fdaa416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
+	*/
+	background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Hind Siliguri', sans-serif;
+}
+body {
+	margin:0px;
+}
+#maindiv {
+	background-image: linear-gradient(to bottom right, #0063FF, #40dcc2);
+	height: 320px;
+	width: 480px;
+	box-shadow:4px 4px #292929;
+}
+.paddedtext {
+	margin-top:0px;
+	padding: 10px;
+	color: white;
+	text-shadow: 1px 1px #292929;
+	font-family: 'Hind Siliguri', sans-serif;
+	position: absolute;
+	left: 20px;
+	font-size: 20px;
+}
+#main-temp {
+	color:white;
+	font-size:30px;
+	position: absolute;
+    top: 70px;
+    left: 40px;
+}
+
+
+#banner {
+	color:white;
+	font-size: 20px;
+}
+
+.banner-item {
+	float:left;
+	font-size:20px;
+	margin-left:50px;
+}
+
+
+
+
+#menu-table-div {
+	position:absolute;
+	left:200px;
+	top:50px;
+}
+#main-menu-table {
+	color:white;
+	border-spacing: 10px;
+}
+.menu-table-elements {
+	border: 3px solid white;
+	padding: 80px 10px 0px 10px;
+	margin: 10px;
+	width: 90px;
+	border-radius:5px;
+}
+.menu-table-elements:hover {
+	background-color:white;
+	color:#01d4e1;
+	cursor:pointer;
+}
+
+
+p {
+	font-family: 'Hind Siliguri', sans-serif;
+	color:white;
+	margin-top: 10px;
+    margin-bottom: 5px;
+}
+.hover-underline:hover {
+	text-decoration:underline;
+	cursor:pointer;
+}
+
+
+#clouds {
+	position: absolute;
+	top:240px;
+	left: 40px;
+	width:65px;
+	height:auto;
+}
+
+
+#air-temp {
+	position:absolute;
+    top: 250px;
+    left: 115px;
+}
+
+#air {
+	position:absolute;
+	top: 265px;
+    left: 115px;
+}
+
+#backbutton {
+	position: absolute;
+    top: 250px;
+    left: 375px;
+    border: 3px solid white;
+    padding: 0px 20px 0px 20px;
+    border-radius: 4px;
+}
+
+#backbutton:hover {
+	background-color: white;
+	cursor:pointer;
+}
+#backbutton:hover p {
+	color: #01d4e1;
+	cursor:pointer;
+}
