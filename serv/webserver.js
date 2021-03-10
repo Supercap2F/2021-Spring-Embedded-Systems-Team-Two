@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 var WebSocketServer = require('websocket').server;
+var gpiop = require("onoff").Gpio;
 
 app.use(express.static('public'));
 
@@ -34,18 +35,42 @@ wsServer.on('request',function(request){
 		return;
 	}
 
-	var connection = request.accept(('echo-protocol'), request.origin);
+	var connection = request.accept(('pi-protocol'), request.origin);
 	console.log((new Date()) + ' Connection accpeted.');
 	connection.on('message', function(message) {
 		if(message.type === 'utf8') {
-			console.log(('Recieved Message: ') + message.utf8Data);
-			connection.sendUTF(message.utf8Data);
+			if(message.utf8Data === 'gpio-pin1-on') {
+				// code here to turn on gpio 1
+				turnGPIOon("pin1");
+				console.log("gpio pin1 on");
+			} else if(message.utf8Data === 'gpio-pin1-off') {
+				// code here to turn off gpio 1
+				turnGPIOoff("pin1");
+				console.log("gpio pin1 off");
+			} else {
+				console.log(('Recieved Message: ') + message.utf8Data);
+			}
+
 		}
-		else if(message.type === 'binary') {
-			console.log('Recieved Binary Message of ' + message.binaryData.length + ' bytes');
-			connection.sendBytes(message.binaryData);
+		else {
+			console.log("Unknown Message type recieved from client");
 		}
 	});
-
 });
 
+
+
+// Raspberry pi GPIO pin setup code below 
+var pin4 = new gpiop(4,'out');
+
+function turnGPIOon(pin) {
+	if(pin === 'pin1'){
+		pin4.writeSync(1);
+	}
+}
+
+function turnGPIOoff(pin) {
+	if(pin === 'pin1'){
+		pin4.writeSync(0);
+	}
+}

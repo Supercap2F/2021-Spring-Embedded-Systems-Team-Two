@@ -1,5 +1,5 @@
 // websocket setup code
-var client = new WebSocket('ws://localhost:8000/','echo-protocol');
+var client = new WebSocket('ws://localhost:8000/','pi-protocol');
 
 client.onerror = function() {
 	console.log('Connection Error');
@@ -20,7 +20,7 @@ client.onopen = function() {
 };
 
 client.onclose = function() {
-	console.log('echo-protocol Client Closed');
+	console.log('pi-protocol Client Closed');
 }
 
 client.onmessage = function(e) {
@@ -30,7 +30,6 @@ client.onmessage = function(e) {
 }
 
 // menu functionality code
-
 function changeMenu(callingElement) {
 	var mainmenu = document.getElementById("mainmenu");
 	var heatingmenu = document.getElementById("heatingmenu");
@@ -67,4 +66,15 @@ function changeMenu(callingElement) {
 	}
 
 
+}
+
+var toggleflag = false;
+function sendGPIOcode() {
+	if(toggleflag) {
+		toggleflag = false;
+		client.send("gpio-pin1-off");
+	} else {
+		toggleflag = true;
+		client.send("gpio-pin1-on");
+	}
 }
