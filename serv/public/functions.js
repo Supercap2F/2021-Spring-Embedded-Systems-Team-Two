@@ -1,5 +1,5 @@
 // websocket setup code
-var client = new WebSocket('ws://localhost:8000/','pi-protocol');
+var client = new WebSocket('ws://dannyspitwo:8000/','pi-protocol');
 
 client.onerror = function() {
 	console.log('Connection Error');
@@ -7,25 +7,17 @@ client.onerror = function() {
 
 client.onopen = function() {
 	console.log("WebSocket Client Connected");
-
-	function sendNumber() {
-		if(client.readyState === client.OPEN) {
-			var number = Math.round(Math.random() * 0xFFFFFF);
-			client.send(number.toString());
-			//setTimeout(sendNumber, 1000);
-		}
-	}
-
-	sendNumber();
+	client.send("Raspberry Pi Zero Connected");
 };
 
 client.onclose = function() {
-	console.log('pi-protocol Client Closed');
+	console.log('Raspberry Pi Zero Disconnected');
 }
 
 client.onmessage = function(e) {
 	if (typeof e.data === 'string') {
-		console.log("Received: '" + e.data + "'");
+		document.getElementById("heat").innerHTML = e.data;
+		//console.log("Received: '" + e.data + "'");
 	}
 }
 
@@ -64,8 +56,6 @@ function changeMenu(callingElement) {
 			client.send("Back button Pressed");
 		}
 	}
-
-
 }
 
 var toggleflag = false;
