@@ -27,16 +27,12 @@ function changeMenu(callingElement) {
 	var heatingmenu = document.getElementById("heatingmenu");
 	var filtermenu = document.getElementById("filtermenu");
 	var lightmenu = document.getElementById("lightmenu");
-	var moremenu = document.getElementById("moremenu");
+	var watermenu = document.getElementById("watermenu");
 
 	if(callingElement.id == "heatingmenu-element") {
 		mainmenu.style.display = "none";
 		heatingmenu.style.display = "block"
 
-		if(client.readyState === client.OPEN) {
-			client.send("Client has entered the heating menu");
-		}
-		
 	} else if(callingElement.id == "filtermenu-element") {
 		mainmenu.style.display = "none";
 		filtermenu.style.display = "block"
@@ -45,15 +41,15 @@ function changeMenu(callingElement) {
 		mainmenu.style.display = "none";
 		lightmenu.style.display = "block"
 
-	} else if(callingElement.id == "moremenu-element") {
+	} else if(callingElement.id == "watermenu-element") {
 		mainmenu.style.display = "none";
-		moremenu.style.display = "block"
+		watermenu.style.display = "block"
 	} else {
 		callingElement.style.display = "none";
 		mainmenu.style.display = "block"
 
 		if(client.readyState === client.OPEN) {
-			client.send("Back button Pressed");
+			//client.send("Back button Pressed");
 		}
 	}
 }

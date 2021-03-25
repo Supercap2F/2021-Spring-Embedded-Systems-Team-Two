@@ -1,0 +1,47 @@
+.vanilla-calendar {
+	width:200px;
+	font-size:10px;
+	position:absolute;
+	left:250px;
+	top:40px;
+	height:200px;
+
+	border: solid 3px #ffffff;
+	background-color: transparent;
+	color: white;
+
+}
+
+.vanilla-calendar .vanilla-calendar-header {
+	padding: 3px;
+	font-size: 15px;
+	font-family: 'Hind Siliguri', sans-serif;
+}
+
+.vanilla-calendar .vanilla-calendar-week {
+	background-color:white;
+	color:transparent;
+}
+
+.vanilla-calendar .vanilla-calendar-week span {
+	padding: 2px 0;
+	color:#1f9ee2;
+}
+
+.vanilla-calendar .vanilla-calendar-header svg {
+	fill: white;
+}
+
+
+.vanilla-calendar .vanilla-calendar-date {
+	color:#33c3cf;
+	padding:2px 0;
+	margin: 2px;
+}
+
+:root {
+	--vanilla-calendar-today-color:transparent;
+	--vanilla-calendar-selected-bg-color:#40dbc3;
+
+
+}
