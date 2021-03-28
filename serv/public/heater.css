@@ -1,6 +1,4 @@
-:root {
-	--main-text-color: white;
-}
+
 
 
 
@@ -95,6 +93,11 @@
   border-spacing: 10px 5px;
 }
 
+#weekdays-day1 {
+  background-color:white;
+  color:rgb(28, 153, 228);
+}
+
 #day-table {
 	border-collapse: separate;
  	border-spacing: 10px 5px;
@@ -113,16 +116,24 @@
  	top:100px;
  	position: absolute;
     top: 130px;
-    left: 20px;
+    left: 10px;
     color: var(--main-text-color);
  }
 
  #heater-times-table {
  	border-collapse: separate;
-  	border-spacing: 10px 5px;
+  	border-spacing: 15px 15px;
  }
 
  .heater-times-element.bordered {
  	border: solid 3px white;
     border-radius: 3px;
+    padding-left:10px;
+    padding-right:10px;
+    cursor:pointer;
  }
+
+.heater-times-element.bordered:hover {
+	background-color:white;
+	color:#1c99e4;
+}

@@ -1,3 +1,20 @@
+:root {
+	--main-text-color: white;
+	--gradient-color-1:#0063FF;
+	--gradient-color-2:#40dcc2;
+	/*--gradient-color-1:#4817DB;
+	--gradient-color-2:#FFBF00;*/
+}
+
+::-moz-selection {
+    background-color: transparent;
+    color: var(--main-text-color);
+}
+
+::selection {
+    background-color: transparent;
+    color: var(--main-text-color);
+}
 html {
 	/*background-image: url(https://images.unsplash.com/photo-1590371674945-9f3c3fdaa416?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80);
 	*/
@@ -9,7 +26,7 @@ body {
 	margin:0px;
 }
 #maindiv {
-	background-image: linear-gradient(to bottom right, #0063FF, #40dcc2);
+	background-image: linear-gradient(to bottom right,var(--gradient-color-1), var(--gradient-color-2));
 	height: 320px;
 	width: 480px;
 	box-shadow:4px 4px #292929;

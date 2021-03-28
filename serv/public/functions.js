@@ -7,7 +7,7 @@ client.onerror = function() {
 
 client.onopen = function() {
 	console.log("WebSocket Client Connected");
-	client.send("Raspberry Pi Zero Connected");
+	//client.send("Raspberry Pi Zero Connected");
 };
 
 client.onclose = function() {

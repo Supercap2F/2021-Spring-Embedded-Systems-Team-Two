@@ -57,12 +57,12 @@
 		<div id="banner">
 			<p class="banner-item">Heating</p>
 			<p class="banner-item">Air 71.1&deg; F</p>
-			<p id="heat" class="banner-item">Outside 71.9&deg; F</p>
+			<p id="heat" class="banner-item">Pool 71.9&deg; F</p>
 		</div>
 		<div id="backbutton" onclick="changeMenu(document.getElementById('heatingmenu'));">
 			<p>Back</p>
 		</div>
-		<div id="savebutton" >
+		<div id="savebutton" onclick="changeHeaterSettings('save')" >
 			<p>Save</p>
 		</div>
 		<!--
@@ -85,7 +85,7 @@
 
 		<div id="heater-checkboxes">
 			<label class="container">Daily Repeat
-				<input id="daily-checkbox" class="inputcheck" type="radio" name="heater-tick" checked="	checked">
+				<input id="daily-checkbox" class="inputcheck" type="radio" name="heater-tick" checked="checked">
 				<span class="checkmark"></span>
 			</label>
 			<label class="container">Weekly Repeat
@@ -99,13 +99,13 @@
 		<div id="weekdays">
 			<table id="weekdays-table">
 				<tr>
-					<td class="weekdays-day" onclick="weeklyScheduleClick(1)">Sun</td>
-					<td class="weekdays-day" onclick="weeklyScheduleClick(2)">Mon</td>
-					<td class="weekdays-day" onclick="weeklyScheduleClick(3)">Tue</td>
-					<td class="weekdays-day" onclick="weeklyScheduleClick(4)">Wed</td>
-					<td class="weekdays-day" onclick="weeklyScheduleClick(5)">Thu</td>
-					<td class="weekdays-day" onclick="weeklyScheduleClick(6)">Fri</td>
-					<td class="weekdays-day" onclick="weeklyScheduleClick(7)">Sat</td>
+					<td class="weekdays-day" id="weekdays-day1" onclick="weeklyScheduleClick(1)">Sun</td>
+					<td class="weekdays-day" id="weekdays-day2" onclick="weeklyScheduleClick(2)">Mon</td>
+					<td class="weekdays-day" id="weekdays-day3" onclick="weeklyScheduleClick(3)">Tue</td>
+					<td class="weekdays-day" id="weekdays-day4" onclick="weeklyScheduleClick(4)">Wed</td>
+					<td class="weekdays-day" id="weekdays-day5" onclick="weeklyScheduleClick(5)">Thu</td>
+					<td class="weekdays-day" id="weekdays-day6" onclick="weeklyScheduleClick(6)">Fri</td>
+					<td class="weekdays-day" id="weekdays-day7" onclick="weeklyScheduleClick(7)">Sat</td>
 				</tr>
 			</table>
 			<table id="day-table">
@@ -121,18 +121,18 @@
 
 				<tr>
 					<td class="heater-times-element">Start: </td>
-					<td class="heater-times-element bordered"><</td>
-					<td class="heater-times-element">8:00AM</td>
-					<td class="heater-times-element">></td>
-					<td class="heater-times-element"><</td>
-					<td class="heater-times-element">70 &deg;</td>
-					<td class="heater-times-element">></td>
+					<td class="heater-times-element bordered" id="uptime1" onclick="changeHeaterSettings('uptime1')"><</td>
+					<td class="heater-times-element" id="starttime">8:00 AM</td>
+					<td class="heater-times-element bordered" id="downtime1" onclick="changeHeaterSettings('downtime1')">></td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptemp')"><</td>
+					<td class="heater-times-element" id="heatertemp">70 &deg;</td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtemp')">></td>
 				</tr>
 				<tr>
 					<td class="heater-times-element">End: </td>
-					<td class="heater-times-element"><</td>
-					<td class="heater-times-element">8:00AM</td>
-					<td class="heater-times-element">></td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptime2')"><</td>
+					<td class="heater-times-element" id="endtime">8:00 AM</td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtime2')">></td>
 				</tr>
 
 			</table>
