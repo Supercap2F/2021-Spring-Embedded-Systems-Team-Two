@@ -1,0 +1,9 @@
+label {
+    display: block;
+    font: 1rem 'Fira Sans', sans-serif;
+}
+
+input,
+label {
+    margin-left: 80px;
+}
