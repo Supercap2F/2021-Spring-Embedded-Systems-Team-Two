@@ -5,6 +5,10 @@ const sensor = require('ds18b20-raspi');
 //const r1wt = require('raspi-1wire-temp');
 //const devices = r1wt.findDevices();
 //console.log(devices);
+// temp sensors setup
+const tempsensor1 = '28-00000656814a';
+const tempsensor2 = '28-000006703dc3';
+
 
 // general package setup 
 var app = express();
@@ -27,9 +31,12 @@ wsServer.on('connection', socket => {
 		}
 	});
 	var intervalId = setInterval(function() {
-	  	const tempF = sensor.readSimpleF();
-		//console.log(`${tempF} F`);
-		socket.send("Temp " + tempF + "&deg; F");
+	  	var temp1F = sensor.readF(tempsensor1,1);
+	  	var temp2F = sensor.readF(tempsensor2,1);
+
+		socket.send("Air " + temp1F + "&deg; F");
+		socket.send("Pool " + temp2F + "&deg; F");
+
 	}, 2000);
 
 
