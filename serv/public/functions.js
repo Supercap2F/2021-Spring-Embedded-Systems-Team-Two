@@ -16,8 +16,13 @@ client.onclose = function() {
 
 client.onmessage = function(e) {
 	if (typeof e.data === 'string') {
-		document.getElementById("heat").innerHTML = e.data;
+		if(e.data.indexOf("Pool") > -1 ) {
+			document.getElementById("heat").innerHTML = e.data;
+		} else if(e.data.indexOf("Air") > -1 ) {
+			document.getElementById("airtemp").innerHTML = e.data;
+		}
 		//console.log("Received: '" + e.data + "'");
+
 	}
 }
 

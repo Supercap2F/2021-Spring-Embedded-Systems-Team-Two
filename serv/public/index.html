@@ -8,6 +8,8 @@
 
 	<script src="./heater.js"></script>
 	<link rel = "stylesheet" href="./heater.css">
+	<link rel = "stylesheet" href="./waterlevel.css">
+	<link rel = "stylesheet" href="./filter.css">
  	<!--
 	<link rel="stylesheet" href=".\vanilla-calendar-master\src\css\vanilla-calendar-min.css">
 
@@ -56,7 +58,7 @@
 	<div id = "heatingmenu" style="display:none">
 		<div id="banner">
 			<p class="banner-item">Heating</p>
-			<p class="banner-item">Air 71.1&deg; F</p>
+			<p id="airtemp" class="banner-item">Air 71.1&deg; F</p>
 			<p id="heat" class="banner-item">Pool 71.9&deg; F</p>
 		</div>
 		<div id="backbutton" onclick="changeMenu(document.getElementById('heatingmenu'));">
@@ -153,6 +155,20 @@
 	<div id = "filtermenu" style="display:none">
 		<div id="banner">
 			<p class="banner-item">Filters</p>
+			<br>
+			<p class="container">Filter: </p>
+			<label class="switch">
+  			<input type="checkbox">
+  			<span class="slider round"></span>
+			</label>
+			<p class="container">Start Time: </p>
+			<input type="datetime-local" id="meeting-time"
+       		name="meeting-time" value="2018-06-12T19:30"
+       		min="2018-06-07T00:00" max="20-06-14T00:00">
+       		<p class="container">End Time: </p>
+       		<input type="datetime-local" id="meeting-time"
+       		name="meeting-time" value="2018-06-12T19:30"
+       		min="2018-06-07T00:00" max="20-06-14T00:00">
 		</div>
 		<div id="backbutton" onclick="changeMenu(document.getElementById('filtermenu'));">
 			<p>Back</p>
@@ -162,6 +178,23 @@
 	<div id = "lightmenu" style="display:none">
 		<div id="banner">
 			<p class="banner-item">Lights</p>
+			<br>
+			<br>
+			<p class="container">Pool Lights: </p>
+			<label class="switch">
+  			<input type="checkbox">
+  			<span class="slider round"></span>
+			</label>
+			<p class="container">Deck Lights: </p>
+			<label class="switch">
+  			<input type="checkbox">
+  			<span class="slider round"></span>
+			</label>
+			<p class="container">Spa Lights: </p>
+			<label class="switch">
+  			<input type="checkbox">
+  			<span class="slider round"></span>
+			</label>
 		</div>
 		<div id="backbutton" onclick="changeMenu(document.getElementById('lightmenu'));">
 			<p>Back</p>
@@ -172,6 +205,14 @@
 		<div id="banner">
 			<p class="banner-item">Schedule</p>
 			<p class="banner-item">12:42pm</p>
+			<br>
+			<br>
+			<p class="container">Water</p>
+			<label class="switch">
+  			<input type="checkbox">
+  			<span class="slider round"></span>
+			</label>
+			<p class="container"> Water Level: </p>
 		</div>
 		<div id="backbutton" onclick="changeMenu(document.getElementById('watermenu'));">
 			<p>Back</p>
