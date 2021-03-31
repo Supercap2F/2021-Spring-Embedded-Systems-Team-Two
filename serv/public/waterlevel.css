@@ -7,9 +7,9 @@
 .slider {
   position: absolute;
   cursor: pointer;
-  margin-left: 120px;
+  margin-left: 80px;
   margin-bottom: 45px;
-  margin-right: -120px;
+  margin-right: -80px;
   margin-top: -45px;
   top: 0;
   left: 0;

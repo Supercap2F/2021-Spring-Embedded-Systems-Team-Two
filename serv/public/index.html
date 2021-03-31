@@ -156,6 +156,13 @@
 	<div id = "filtermenu" style="display:none">
 		<div id="banner">
 			<p class="banner-item">Filters</p>
+			<p><span id="datetime3"></span></p>
+
+			<script>
+			var dt = new Date();
+			document.getElementById("datetime3").innerHTML = dt.toLocaleTimeString();
+			</script>
+			<br>
 			<br>
 			<p class="container">Filter: </p>
 			<label class="switch">
@@ -179,6 +186,12 @@
 	<div id = "lightmenu" style="display:none">
 		<div id="banner">
 			<p class="banner-item">Lights</p>
+			<p><span id="datetime2"></span></p>
+
+			<script>
+			var dt = new Date();
+			document.getElementById("datetime2").innerHTML = dt.toLocaleTimeString();
+			</script>
 			<br>
 			<br>
 			<p class="container">Pool Lights: </p>
@@ -205,10 +218,15 @@
 	<div id = "watermenu" style="display:none">
 		<div id="banner">
 			<p class="banner-item">Schedule</p>
-			<p class="banner-item">12:42pm</p>
+			<p><span id="datetime1"></span></p>
+
+			<script>
+			var dt = new Date();
+			document.getElementById("datetime1").innerHTML = dt.toLocaleTimeString();
+			</script>
 			<br>
 			<br>
-			<p class="container">Water</p>
+			<p class="container">Water:</p>
 			<label class="switch">
   			<input type="checkbox">
   			<span class="slider round"></span>

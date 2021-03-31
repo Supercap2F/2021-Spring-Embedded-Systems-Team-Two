@@ -67,6 +67,27 @@ body {
 	margin-top: 10px;
 }
 
+#datetime1 {
+	position: absolute;
+	font-size: 20px;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
+#datetime2 {
+	position: absolute;
+	font-size: 20px;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
+#datetime3 {
+	position: absolute;
+	font-size: 20px;
+	margin-left: 50px;
+	margin-top: 10px;
+}
+
 #menu-table-div {
 	position:absolute;
 	left:200px;
