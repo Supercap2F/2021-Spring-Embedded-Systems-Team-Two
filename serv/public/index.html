@@ -26,11 +26,15 @@
 	<div id = "mainmenu">
 		<div id="banner">
 			<p class="banner-item">Pool Controller</p>
-			<p class="banner-item">pH 7.5</p>
-			<p class="banner-item">12:42am</p>
-		</div>
+			<p><span id="datetime"></span></p>
+
+			<script>
+			var dt = new Date();
+			document.getElementById("datetime").innerHTML = dt.toLocaleString();
+			</script>		
+	</div>
 		<div id="main-temp">
-			<h1>85&deg; F</h1>
+			<!-- weather widget start --><a target="_blank" href="https://www.booked.net/weather/edmond-4043"><img src="https://w.bookcdn.com/weather/picture/32_4043_0_1_3498db_250_2980b9_ffffff_ffffff_1_2071c9_ffffff_0_6.png?scode=124&domid=w209&anc_id=74254"  alt="booked.net"/></a><!-- weather widget end -->
 		</div>
 		<div id="menu-table-div" >
 			<table id="main-menu-table">
@@ -45,9 +49,6 @@
 			</table>
 		</div>
 		<div>
-			<img id="clouds" src="clouds.png" alt="clouds">
-			<p id="air-temp">75&deg F</p>
-			<p id="air">Air</p>
 		</div>
 	</div>
 
@@ -123,18 +124,18 @@
 
 				<tr>
 					<td class="heater-times-element">Start: </td>
-					<td class="heater-times-element bordered" id="uptime1" onclick="changeHeaterSettings('uptime1')"><</td>
+					<td class="heater-times-element bordered" id="uptime1" onclick="changeHeaterSettings('downtime1')"><</td>
 					<td class="heater-times-element" id="starttime">8:00 AM</td>
-					<td class="heater-times-element bordered" id="downtime1" onclick="changeHeaterSettings('downtime1')">></td>
-					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptemp')"><</td>
+					<td class="heater-times-element bordered" id="downtime1" onclick="changeHeaterSettings('uptime1')">></td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtemp')"><</td>
 					<td class="heater-times-element" id="heatertemp">70 &deg;</td>
-					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtemp')">></td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptemp')">></td>
 				</tr>
 				<tr>
 					<td class="heater-times-element">End: </td>
-					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptime2')"><</td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtime2')"><</td>
 					<td class="heater-times-element" id="endtime">8:00 AM</td>
-					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtime2')">></td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptime2')">></td>
 				</tr>
 
 			</table>
@@ -163,11 +164,11 @@
 			</label>
 			<p class="container">Start Time: </p>
 			<input type="datetime-local" id="meeting-time"
-       		name="meeting-time" value="2018-06-12T19:30"
+       		name="meeting-time" value="2021-1-1T19:30"
        		min="2018-06-07T00:00" max="20-06-14T00:00">
        		<p class="container">End Time: </p>
        		<input type="datetime-local" id="meeting-time"
-       		name="meeting-time" value="2018-06-12T19:30"
+       		name="meeting-time" value="2021-1-1T19:30"
        		min="2018-06-07T00:00" max="20-06-14T00:00">
 		</div>
 		<div id="backbutton" onclick="changeMenu(document.getElementById('filtermenu'));">

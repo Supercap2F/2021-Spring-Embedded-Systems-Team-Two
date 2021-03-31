@@ -60,9 +60,12 @@ body {
 	font-size:20px;
 	margin-left:50px;
 }
-
-
-
+#datetime {
+	position: absolute;
+	font-size: 20px;
+	margin-left: 50px;
+	margin-top: 10px;
+}
 
 #menu-table-div {
 	position:absolute;
