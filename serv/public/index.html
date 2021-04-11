@@ -4,15 +4,13 @@
 	<link rel="stylesheet" href="./styles.css">
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@600&display=swap" rel="stylesheet">
-	<script src="./functions.js"></script>
+	<script src="./js/functions.js"></script>
 
-	<script src="./heater.js"></script>
+	<script src="./js/heater.js"></script>
 	<link rel = "stylesheet" href="./heater.css">
- 	<!--
-	<link rel="stylesheet" href=".\vanilla-calendar-master\src\css\vanilla-calendar-min.css">
 
-	<script src="./calendar.js"></script>
-	<link rel="stylesheet" href="./calendar.css">-->
+	<link rel="stylesheet" href="./water.css">
+	<script src="./js/water.js"></script>
 
 </head>
 <body>
@@ -65,23 +63,6 @@
 		<div id="savebutton" onclick="changeHeaterSettings('save')" >
 			<p>Save</p>
 		</div>
-		<!--
-		<div id="gpio-switch">
-			<label class = "switch">
-				<input type = "checkbox" onclick="sendGPIOcode();">
-				<span class = "slider round"></span>
-			</label>
-			<p>Relay #1</p>
-		</div>
-		<div id="gpio-switch-2">
-			<label class = "switch">
-				<input type = "checkbox" onclick="sendGPIOcode();">
-				<span class = "slider round"></span>
-			</label>
-			<p>Relay #2</p>
-		</div>-->
-		<!-- The following code implements a HTML calendar -->
-		<!--<div id="myCalendar" class="vanilla-calendar"></div>-->
 
 		<div id="heater-checkboxes">
 			<label class="container">Daily Repeat
@@ -118,23 +99,34 @@
 
 		<div id="heater-times">
 			<table id="heater-times-table">
-
 				<tr>
 					<td class="heater-times-element">Start: </td>
 					<td class="heater-times-element bordered" id="uptime1" onclick="changeHeaterSettings('uptime1')"><</td>
 					<td class="heater-times-element" id="starttime">8:00 AM</td>
 					<td class="heater-times-element bordered" id="downtime1" onclick="changeHeaterSettings('downtime1')">></td>
+
+
+					<td class="heater-times-element">During: </td>
 					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptemp')"><</td>
 					<td class="heater-times-element" id="heatertemp">70 &deg;</td>
 					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtemp')">></td>
+
+
+
+
 				</tr>
 				<tr>
 					<td class="heater-times-element">End: </td>
 					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptime2')"><</td>
 					<td class="heater-times-element" id="endtime">8:00 AM</td>
 					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtime2')">></td>
-				</tr>
 
+
+					<td class="heater-times-element">After: </td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptemp2')"><</td>
+					<td class="heater-times-element" id="heatertemp2">70 &deg;</td>
+					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtemp2')">></td>
+				</tr>
 			</table>
 
 
@@ -170,11 +162,34 @@
 
 	<div id = "watermenu" style="display:none">
 		<div id="banner">
-			<p class="banner-item">Schedule</p>
-			<p class="banner-item">12:42pm</p>
+			<p class="banner-item">Water Level</p>
 		</div>
+		<div>
+			<div id="water-level">
+				<div id="water-level-bar">
+					
+				</div>
+			</div>
+
+
+			<input  id="water-set" min="0" max="9" step="0.5" value="4.5" type="range" orient="vertical" />
+
+
+
+			<div id="water-menu-ops">
+				<p id="water-set-level">Set Level = 9.1"</p>
+				<p id="water-actual-level">Actual Level = 9.1"</p>
+			</div>
+		</div>
+
+
+
+
 		<div id="backbutton" onclick="changeMenu(document.getElementById('watermenu'));">
 			<p>Back</p>
+		</div>
+		<div id="savebutton" onclick="saveWaterSettings()" >
+			<p>Save</p>
 		</div>
 	</div>
 </div>

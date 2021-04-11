@@ -1,5 +1,6 @@
 // websocket setup code
 var client = new WebSocket('ws://dannyspitwo:8000/','pi-protocol');
+var serverWaterLevel = 4.5;
 
 client.onerror = function() {
 	console.log('Connection Error');
@@ -20,9 +21,11 @@ client.onmessage = function(e) {
 			document.getElementById("heat").innerHTML = e.data;
 		} else if(e.data.indexOf("Air") > -1 ) {
 			document.getElementById("airtemp").innerHTML = e.data;
-		}
-		//console.log("Received: '" + e.data + "'");
-
+		} else if(e.data.indexof("wl") > -1) {
+			// change the server water level here
+			// serverWaterLevel = 
+			// call the function that updates the GUI
+		}	
 	}
 }
 

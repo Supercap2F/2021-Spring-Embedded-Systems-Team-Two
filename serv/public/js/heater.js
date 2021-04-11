@@ -1,23 +1,9 @@
-
 window.addEventListener('load', function () {
 	document.getElementById("weekly-checkbox").onclick = removeCalendar;
 	document.getElementById("daily-checkbox").onclick = removeCalendar;
 
 	removeCalendar();
 });
-
-
-function removeCalendar() {
-	if(document.getElementById("daily-checkbox").checked) {
-		document.getElementById("weekdays-table").style.display = "none";
-		document.getElementById("day-table").style.display = "block";
-	} else {
-		document.getElementById("weekdays-table").style.display = "block";
-		document.getElementById("day-table").style.display = "none";
-	}
-};
-
-
 
 var startTime = 8;
 var startPMorAM = "AM";
@@ -29,9 +15,31 @@ var realEndTime = 8;
 
 var heater = {
 	"temp":70,
+	"temp2": 70,
 	"currentDay":1,
 	"DorW":false
 }
+
+function removeCalendar() {
+	if(document.getElementById("daily-checkbox").checked) {
+		document.getElementById("weekdays-table").style.display = "none";
+		document.getElementById("day-table").style.display = "block";
+	} else {
+		document.getElementById("weekdays-table").style.display = "block";
+		document.getElementById("day-table").style.display = "none";
+	}
+};
+
+function requestDayData() {
+
+
+}
+
+function dayDataRecieved() {
+
+
+}
+
 
 
 function weeklyScheduleClick(i) {
@@ -108,11 +116,23 @@ function changeHeaterSettings(calling) {
 			if(heater.temp == 59) {
 				heater.temp = 60;
 			}
+		}else if(calling == 'uptemp2') {
+			heater.temp2++;
+			if(heater.temp2 == 91) {
+				heater.temp2 = 90;
+			}
+		} else if(calling == 'downtemp2') {
+			heater.temp2--;
+			if(heater.temp2 == 59) {
+				heater.temp2 = 60;
+			}
 		}
+
 
 		document.getElementById("starttime").innerHTML = realStartTime + ":00 " + startPMorAM;
 		document.getElementById("endtime").innerHTML = realEndTime + ":00 " + endPMorAM;
 		document.getElementById("heatertemp").innerHTML = heater.temp + " &deg;";
+		document.getElementById("heatertemp2").innerHTML = heater.temp2 + " &deg;";
 
 		// this portion controls the date that is selected
 		if(document.getElementById("weekly-checkbox").checked) {
@@ -129,20 +149,18 @@ function changeHeaterSettings(calling) {
 		} else {
 			heater.DorW = false;
 
-
-
 		}
 
 		// this portion controls sending data to the server
 		if(calling == "save") {
 			if(endTime > startTime) {
-					client.send("ht:" + startTime + " " + endTime + " " + heater.temp + " " + heater.DorW + " " + heater.currentday);
-					console.log("ht:" + startTime + " " + endTime + " " + heater.temp);
+					client.send("hm: " + heater.DorW + " " + heater.currentday);
+					client.send("ht: " + startTime + " " + endTime + " " + heater.temp + " " + heater.temp2);
+					console.log("ht: " + startTime + " " + endTime + " " + heater.temp + " " + heater.temp2);
 			} else {
 				console.log("End time cannot be less than start time");
 			}
 		}
-
 
 }
 
