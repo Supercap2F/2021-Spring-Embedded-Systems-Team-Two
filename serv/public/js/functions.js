@@ -19,13 +19,28 @@ client.onmessage = function(e) {
 	if (typeof e.data === 'string') {
 		if(e.data.indexOf("Pool") > -1 ) {
 			document.getElementById("heat").innerHTML = e.data;
+			document.getElementById("pool-water-temp").innerHTML = e.data.slice(5);
+
+
+
 		} else if(e.data.indexOf("Air") > -1 ) {
 			document.getElementById("airtemp").innerHTML = e.data;
-		} else if(e.data.indexof("wl") > -1) {
+			document.getElementById("air-temp").innerHTML = e.data.slice(4);
+
+
+
+		} else if(e.data.indexOf("wl") > -1) {
 			// change the server water level here
 			// serverWaterLevel = 
 			// call the function that updates the GUI
-		}	
+			serverWaterLevel = (parseInt(e.data.slice(4),10)/255) * 9;
+			updateServerWaterLevel();
+			//console.log(e.data);
+
+		} else if (e.data.indexOf("pH") > -1) {
+			// change the pool ph level here
+			document.getElementById("pool-ph").innerHTML = e.data;
+		}
 	}
 }
 

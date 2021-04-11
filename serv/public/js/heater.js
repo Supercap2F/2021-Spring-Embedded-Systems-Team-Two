@@ -31,12 +31,14 @@ function removeCalendar() {
 };
 
 function requestDayData() {
+	// this function requests that the server send us new day data from its database
 
 
 }
 
 function dayDataRecieved() {
-
+	// this will get called when the functions js file recieves the correct commmand
+	// put code in here to update the day that the user is on to the new data
 
 }
 

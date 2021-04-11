@@ -22,11 +22,11 @@
 	<div id = "mainmenu">
 		<div id="banner">
 			<p class="banner-item">Pool Controller</p>
-			<p class="banner-item">pH 7.5</p>
+			<p class="banner-item" id="pool-ph">pH 7.5</p>
 			<p class="banner-item">12:42am</p>
 		</div>
 		<div id="main-temp">
-			<h1>85&deg; F</h1>
+			<h1 id="pool-water-temp">--&deg; F</h1>
 		</div>
 		<div id="menu-table-div" >
 			<table id="main-menu-table">
@@ -42,7 +42,7 @@
 		</div>
 		<div>
 			<img id="clouds" src="./resources/clouds.png" alt="clouds">
-			<p id="air-temp">75&deg F</p>
+			<p id="air-temp">--&deg F</p>
 			<p id="air">Air</p>
 		</div>
 	</div>
@@ -75,8 +75,6 @@
 			</label>
 		</div>
 
-
-
 		<div id="weekdays">
 			<table id="weekdays-table">
 				<tr>
@@ -96,7 +94,6 @@
 			</table>
 		</div>
 
-
 		<div id="heater-times">
 			<table id="heater-times-table">
 				<tr>
@@ -110,10 +107,6 @@
 					<td class="heater-times-element bordered" onclick="changeHeaterSettings('uptemp')"><</td>
 					<td class="heater-times-element" id="heatertemp">70 &deg;</td>
 					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtemp')">></td>
-
-
-
-
 				</tr>
 				<tr>
 					<td class="heater-times-element">End: </td>
@@ -128,12 +121,7 @@
 					<td class="heater-times-element bordered" onclick="changeHeaterSettings('downtemp2')">></td>
 				</tr>
 			</table>
-
-
-
-
 		</div>
-
 	</div>
 
 

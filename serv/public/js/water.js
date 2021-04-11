@@ -25,16 +25,12 @@ function saveWaterSettings() {
 }
 
 function updateServerWaterLevel() {
-
 	var waterPixels = Math.floor((serverWaterLevel/9) * 170);
 	document.getElementById("water-level-bar").style.height = waterPixels +"px";
 	document.getElementById("water-level-bar").style.top = 170 - waterPixels+"px";
 
-	console.log(waterPixels);
-	document.getElementById("water-actual-level").innerHTML = "Actual Level = " + serverWaterLevel + "\"";
-
-
-
+	//console.log(waterPixels);
+	document.getElementById("water-actual-level").innerHTML = "Actual Level = " + serverWaterLevel.toFixed(1) + "\"";
 
 }
 
