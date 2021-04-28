@@ -1,11 +1,13 @@
 var waterLevelElement;
 
-var setLevel;
+var setLevel = 2;
 
 window.addEventListener('load', function () {
 	waterLevelElement = document.getElementById("water-set");
 	waterLevelElement.addEventListener('input', updateWaterLevel);
 	updateWaterLevel();
+
+	client.send("sl " + setLevel);
 });
 
 
@@ -20,8 +22,8 @@ function updateWaterLevel() {
 function saveWaterSettings() {
 	// send new water level set value to websockets
 	console.log("water level saved");
-
-	client.send("wl: " + setLevel);
+	setLevel = Math.round((setLevel/9)*255);
+	client.send("sl " + setLevel);
 }
 
 function updateServerWaterLevel() {

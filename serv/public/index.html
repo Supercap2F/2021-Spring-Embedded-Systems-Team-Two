@@ -12,6 +12,12 @@
 	<link rel="stylesheet" href="./css/water.css">
 	<script src="./js/water.js"></script>
 
+	<script> 
+		var intervalId4 = setInterval(function() {
+			var d = new Date();
+			document.getElementById("main-time").innerHTML = (d.getHours()>12 ? (d.getHours() - 12):(d.getHours())) + ":" + d.getMinutes() + (d.getHours()>12 ? ' pm':' am');
+		}, 1000);
+	</script>
 </head>
 <body>
 
@@ -23,7 +29,7 @@
 		<div id="banner">
 			<p class="banner-item">Pool Controller</p>
 			<p class="banner-item" id="pool-ph">pH 7.5</p>
-			<p class="banner-item">12:42am</p>
+			<p class="banner-item" id="main-time">12:42am</p>
 		</div>
 		<div id="main-temp">
 			<h1 id="pool-water-temp">--&deg; F</h1>
@@ -65,12 +71,12 @@
 		</div>
 
 		<div id="heater-checkboxes">
-			<label class="container">Daily Repeat
-				<input id="daily-checkbox" class="inputcheck" type="radio" name="heater-tick" checked="checked">
+			<label class="container" onclick="weeklyScheduleClick(8)">Daily Repeat
+				<input id="daily-checkbox" class="inputcheck" type="radio" name="heater-tick" checked="checked" >
 				<span class="checkmark"></span>
 			</label>
-			<label class="container">Weekly Repeat
-				<input id="weekly-checkbox" class="inputcheck" type="radio"  name="heater-tick">
+			<label class="container" onclick="weeklyScheduleClick(1)">Weekly Repeat
+				<input id="weekly-checkbox" class="inputcheck" type="radio"  name="heater-tick" >
 				<span class="checkmark"></span>
 			</label>
 		</div>
@@ -89,7 +95,7 @@
 			</table>
 			<table id="day-table">
 				<tr> 
-					<td class="day-day">All Days</td>
+					<td class="day-day" >All Days</td>
 				</tr>
 			</table>
 		</div>
