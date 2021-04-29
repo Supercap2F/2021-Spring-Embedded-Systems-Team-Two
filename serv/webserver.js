@@ -7,12 +7,21 @@ fs = require('fs');
 
 // local database stuff
 var database;
+var database2;
 fs.readFile('./database.json', 'utf8', function (err,data) {
   if (err) {
     return console.log(err);
   }
   database = JSON.parse(data);
 });
+fs.readFile('./databaseFilter.json', 'utf8', function (err,data) {
+  if (err) {
+    return console.log(err);
+  }
+  database2 = JSON.parse(data);
+});
+
+
 
 function saveDatabase() {
 	var fileData = JSON.stringify(database);
@@ -21,6 +30,16 @@ function saveDatabase() {
 		  console.log('Saved database!');
 	});
 }
+
+function saveDatabase2() {
+	var fileData = JSON.stringify(database2);
+	fs.writeFile('./databaseFilter.json', fileData, function (err) {
+		  if (err) throw err;
+		  console.log('Saved database2!');
+	});
+}
+
+
 
 // temp sensors setup
 const tempsensor1 = '28-00000656814a';
@@ -56,9 +75,13 @@ wsServer.on('connection', socket => {
 				database.sun = message;
 			} else if(message.indexOf("day ") > -1) {
 				database.day = message;
-			} else if(message.indexOf("save") > -1) {
+			} else if(message.indexOf("fay ") > -1) {
+				database2.fay = message;
+			}else if(message.indexOf("save") > -1) {
 				saveDatabase();
-			} 
+			} else if(message.indexOf("sav2") > -1) {
+				saveDatabase2();
+			}
 
 			// if the message is the water level
 			else if(message.indexOf('sl ') > -1) {
@@ -125,6 +148,7 @@ message2 = Buffer.from([0b00011010]);
 
 var waterLevel = 0;
 var airTemp = 0;
+var poolTemp = 0;
 
 spi.clockSpeed(20000);
 var intervalId2 = setInterval(function() {
@@ -157,9 +181,11 @@ var intervalId2 = setInterval(function() {
 	    	} 
 		});
 	  	airTemp = sensor.readF(tempsensor1,1);
-	  	var temp2F = sensor.readF(tempsensor2,1);
+	  	poolTemp = sensor.readF(tempsensor2,1);
 		client.send("Air " + airTemp + "&deg; F");
-		client.send("Pool " + temp2F + "&deg; F");
+		client.send("Pool " + poolTemp + "&deg; F");
+		client.send("filon  " + filteron);
+		client.send("filoff " + filteroff);
       }
   });
 }, 500);
@@ -175,6 +201,7 @@ function sendSchedule(sock) {
 	sock.send(database.sat);
 	sock.send(database.sun);
 	sock.send(database.day);
+	sock.send(database2.fay);
 }
 
 // function adds leading space if needed
@@ -196,17 +223,42 @@ function ALS(number) {
 
 // this code controls turning on the heater to keep the pool at the set level
 var intervalId3 = setInterval(function() {
-	if(airTemp < parseInt(database.day.slice(14,16)) ) {
-		turnGPIOon('pin27');
+	var d = new Date();
+
+	if(d.getHours() >= parseInt(database.day.slice(6,8)) && d.getHours() <= parseInt(database.day.slice(11,13))) {
+		if(poolTemp < parseInt(database.day.slice(14,16)) ) {
+			turnGPIOon('pin27');
+		} else {
+			turnGPIOoff('pin27');
+		}
 	} else {
-		turnGPIOoff('pin27');
+		if(poolTemp < parseInt(database.day.slice(17)) ) {
+			turnGPIOon('pin27');
+		} else {
+			turnGPIOoff('pin27');
+		}
 	}
-
-
-
-
-
-
-
 }, 500);
+
+
+// this code controls the filter time stuff
+var filteron = 0;
+var filteroff = 0;
+
+var intervalId4 = setInterval(function() {
+	if(parseInt(database2.fay.slice(14,16)) == 1) {
+		// the filter is enabled
+		var d = new Date();
+		// the time is correct
+		if(d.getHours() >= parseInt(database2.fay.slice(6,8)) && d.getHours() <= parseInt(database2.fay.slice(11,13))) {
+			filteron++;
+		} else {
+			filteroff++;
+		}
+	} else {
+		filteroff++;
+	}
+}, 60000); // every minute
+
+
 

@@ -2,6 +2,7 @@
 var client = new WebSocket('ws://dannyspitwo:8000/','pi-protocol');
 var serverWaterLevel = 4.5;
 var DBrecievedFlag = 0;
+var filDBrecievedFlag = 0;
 
 var databaseSchedule = {
 	mon: {
@@ -53,6 +54,18 @@ var databaseSchedule = {
 		end_temp: 0
 	}
 };
+
+var databaseSchedule2 = {
+	fay: {
+		start_time: 0,
+		end_time: 0,
+		start_temp: 0,
+		end_temp: 0
+	}
+};
+
+var filterontime = 0;
+var filterofftime = 0;
 
 client.onerror = function() {
 	console.log('Connection Error');
@@ -151,6 +164,25 @@ client.onmessage = function(e) {
 			databaseSchedule.day.end_temp = parseInt(e.data.slice(17,19));
 			DBrecievedFlag = 1;
 			console.log(e.data);
+		} else if(e.data.indexOf("fay ") >-1 ) {
+			databaseSchedule2.fay.start_time = parseInt(e.data.slice(4,8));
+			databaseSchedule2.fay.end_time = parseInt(e.data.slice(9,13));
+			databaseSchedule2.fay.start_temp = parseInt(e.data.slice(14,16));
+			databaseSchedule2.fay.end_temp = parseInt(e.data.slice(17,19));
+			filDBrecievedFlag = 1;
+			if(databaseSchedule2.fay.start_temp == 1) {
+				document.getElementById("filter-onoff").checked = true;
+			} else {
+				document.getElementById("filter-onoff").checked = false;
+			}
+			changeFilterSettings();
+			console.log(e.data);
+		} else if(e.data.indexOf("filon ") >-1) {
+			filterontime = parseInt(e.data.slice(7));
+			//console.log(e.data);
+		} else if(e.data.indexOf("filoff ") >-1) {
+			filterofftime = parseInt(e.data.slice(7));
+			//console.log(e.data);
 		}
 	}
 }

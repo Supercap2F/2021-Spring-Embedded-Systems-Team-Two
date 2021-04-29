@@ -12,10 +12,13 @@
 	<link rel="stylesheet" href="./css/water.css">
 	<script src="./js/water.js"></script>
 
+	<link rel="stylesheet" href="./css/filters.css">
+	<script src="./js/filter.js"></script>
+
 	<script> 
 		var intervalId4 = setInterval(function() {
 			var d = new Date();
-			document.getElementById("main-time").innerHTML = (d.getHours()>12 ? (d.getHours() - 12):(d.getHours())) + ":" + d.getMinutes() + (d.getHours()>12 ? ' pm':' am');
+			document.getElementById("main-time").innerHTML = (1 + d.getMonth()) + "/" + d.getDate() + "/" + d.getFullYear() + " " + (d.getHours()>12 ? (d.getHours() - 12):(d.getHours())) + ":" + d.getMinutes() + (d.getHours()>12 ? ' pm':' am');
 		}, 1000);
 	</script>
 </head>
@@ -132,18 +135,70 @@
 
 
 
-
-
-
-
 	<div id = "filtermenu" style="display:none">
 		<div id="banner">
 			<p class="banner-item">Filters</p>
+		</div>
+
+		<div id='filter-running-time'> 
+			<p class="banner-item" id="fil-run-time">Running Time: 100 hr on</p>
+			<script> 
+				var interval5 = setInterval(function() {
+					document.getElementById("fil-run-time").innerHTML = "Running Time: " + filterontime + " min on " + filterofftime + " min off";
+
+
+
+				},500);
+			</script>
+		</div>
+
+
+		<div id="filter-times">
+			<table id="filter-times-table">
+				<tr>
+					<td class="filter-times-element">Start: </td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-uptime1')"><</td>
+					<td class="filter-times-element" id="filter-starttime">8:00 AM</td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-downtime1')">></td>
+
+					<!--
+					<td class="filter-times-element">During: </td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-uptemp')"><</td>
+					<td class="filter-times-element" id="filter-temp">70 &deg;</td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-downtemp')">></td>-->
+				</tr>
+				<tr>
+					<td class="filter-times-element">End: </td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-uptime2')"><</td>
+					<td class="filter-times-element" id="filter-endtime">8:00 AM</td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-downtime2')">></td>
+				<label class="switch">
+				  <input type="checkbox" id="filter-onoff">
+				  <span class="slider round" onclick="changeFilterSettings()"></span>
+				</label>
+					<!--
+					<td class="filter-times-element">After: </td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-uptemp2')"><</td>
+					<td class="filter-times-element" id="filter-temp2">70 &deg;</td>
+					<td class="filter-times-element bordered" onclick="changeFilterSettings('filter-downtemp2')">></td>-->
+				</tr>
+			</table>
+		</div>
+
+
+		<div id="savebutton" onclick="changeFilterSettings('save')" >
+			<p>Save</p>
 		</div>
 		<div id="backbutton" onclick="changeMenu(document.getElementById('filtermenu'));">
 			<p>Back</p>
 		</div>
 	</div>
+
+
+
+
+
+
 
 	<div id = "lightmenu" style="display:none">
 		<div id="banner">
@@ -153,6 +208,10 @@
 			<p>Back</p>
 		</div>
 	</div>
+
+
+
+
 
 	<div id = "watermenu" style="display:none">
 		<div id="banner">
@@ -164,21 +223,12 @@
 					
 				</div>
 			</div>
-
-
 			<input  id="water-set" min="0" max="9" step="0.5" value="4.5" type="range" orient="vertical" />
-
-
-
 			<div id="water-menu-ops">
 				<p id="water-set-level">Set Level = 9.1"</p>
 				<p id="water-actual-level">Actual Level = 9.1"</p>
 			</div>
 		</div>
-
-
-
-
 		<div id="backbutton" onclick="changeMenu(document.getElementById('watermenu'));">
 			<p>Back</p>
 		</div>

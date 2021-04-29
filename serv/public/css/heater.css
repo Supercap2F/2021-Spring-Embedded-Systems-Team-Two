@@ -6,6 +6,7 @@
 	position: absolute;
     top: 45px;
     color: white;
+    display:none;
 }
 
 .container {
